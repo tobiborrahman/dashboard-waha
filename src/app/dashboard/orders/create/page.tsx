@@ -9,10 +9,8 @@ export default function CreateOrderPage() {
 
   const handleCreateOrder = async (values: OrderFormValues) => {
     try {
-      // Calculate totalAmount
       const totalAmount = values.productIds.reduce((acc, pid, idx) => {
-        // Ideally fetch product price from /api/products
-        const price = 100; // placeholder
+        const price = 100;
         const qty = values.quantities[idx] || 1;
         return acc + price * qty;
       }, 0);

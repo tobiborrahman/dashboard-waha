@@ -15,30 +15,10 @@ import {
 	Tooltip,
 	Legend,
 	CartesianGrid,
-	ResponsiveContainer,
-	defs,
-	linearGradient,
-	stop,
+	ResponsiveContainer
 } from 'recharts';
-
-type Product = {
-	id: string;
-	name: string;
-	price: number;
-	stock: number;
-	active: boolean;
-	createdAt: string;
-};
-
-type Order = {
-	id: string;
-	clientName: string;
-	productIds: string[];
-	quantities: number[];
-	totalAmount: number;
-	paymentStatus: 'Paid' | 'Pending' | 'Refunded';
-	createdAt: string;
-};
+import { Product } from '@/types/product';
+import { Order } from '@/types/order';
 
 export default function DashboardPage() {
 	const { data: products = [], isLoading: loadingProducts } = useQuery({
@@ -97,7 +77,6 @@ export default function DashboardPage() {
 			bgColor: 'bg-yellow-500',
 		},
 	];
-	// Chart Data (Last 30 days)
 	const chartData = Array.from({ length: 30 }, (_, i) => {
 		const date = new Date();
 		date.setDate(date.getDate() - (29 - i));

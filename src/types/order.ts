@@ -1,16 +1,20 @@
-// types/order.ts
-export type OrderItem = {
-  productId: string;
-  productName: string;
-  quantity: number;
-  price: number;
-};
+export type OrderStatus = "Pending" | "Shipped" | "Delivered" | "Cancelled";
+export type PaymentStatus = "Pending" | "Paid" | "Failed";
 
 export type Order = {
   id: string;
-  customerName: string;
-  items: OrderItem[];
+  clientName: string;
+  orderDate: string;
   totalAmount: number;
-  status: "Pending" | "Shipped" | "Delivered" | "Cancelled";
+  orderStatus: OrderStatus;
+  paymentStatus: PaymentStatus;
   createdAt: string;
+  updatedAt: string;
+  quantities: number[];
+  products: {
+    id: string;
+    name: string;
+    quantities: number;
+    price: number;
+  }[];
 };

@@ -1,4 +1,3 @@
-// app/dashboard/products/page.tsx
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import ProductTable from "@/components/products/index"

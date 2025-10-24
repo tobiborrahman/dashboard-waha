@@ -48,7 +48,6 @@ export default function OrderForm({ onSubmit }: OrderFormProps) {
     },
   });
 
-  // Fetch products
   useEffect(() => {
     (async () => {
       const res = await fetch("/api/products");
@@ -60,14 +59,12 @@ export default function OrderForm({ onSubmit }: OrderFormProps) {
   const productIds = watch("productIds");
   const quantities = watch("quantities");
 
-  // Sync quantities with selected products
   useEffect(() => {
     const currentQuantities = watch("quantities") || [];
     const newQuantities = productIds.map((_, i) => Number(currentQuantities[i] ?? 1));
     setValue("quantities", newQuantities, { shouldValidate: true });
   }, [productIds, setValue, watch]);
 
-  // Calculate total
   const total = useMemo(() => {
     if (!productIds || !quantities) return 0;
     return productIds.reduce((acc, id, idx) => {
@@ -77,7 +74,6 @@ export default function OrderForm({ onSubmit }: OrderFormProps) {
     }, 0);
   }, [productIds, quantities, products]);
 
-  /** ----- Controllers ----- */
 
   const CustomerNameCon = (
     <Controller
@@ -228,8 +224,6 @@ export default function OrderForm({ onSubmit }: OrderFormProps) {
       />
     );
   });
-
-  /** ----- Layout ----- */
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

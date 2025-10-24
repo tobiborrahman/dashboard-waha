@@ -1,4 +1,3 @@
-// src/types/product.ts
 export type ProductStatus = "active" | "inactive";
 
 export interface Product {
@@ -6,11 +5,11 @@ export interface Product {
   name: string;
   sku: string;
   category: string;
-  price: number; // cents or plain — we will use plain for demo
+  price: number; 
   stock: number;
   description?: string;
   imageUrl?: string;
   active: boolean;
   createdAt: string;
-  sales?: number[]; // last 7 days for sparkline demo
+  sales?: number[];
 }

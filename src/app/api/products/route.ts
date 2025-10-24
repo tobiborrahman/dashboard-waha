@@ -1,4 +1,4 @@
-// app/api/products/route.ts
+
 import { NextResponse } from "next/server";
 import type { Product } from "@/types/product";
 import { uid } from "@/lib/generateId";
@@ -17,11 +17,9 @@ let DB: Product[] = [
     createdAt: new Date().toISOString(),
     sales: [4, 6, 5, 8, 10, 6, 9],
   },
-  // add more seed items as needed
 ];
 
 export async function GET(request: Request) {
-  // support simple query params: page, perPage, sortBy, order, filters...
   const url = new URL(request.url);
   const page = Number(url.searchParams.get("page") ?? 1);
   const perPage = Number(url.searchParams.get("perPage") ?? 10);

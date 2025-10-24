@@ -15,12 +15,6 @@ export default function OrdersPage() {
     refetchOnWindowFocus: false,
   });
 
-  const handleAddOrder = (order: any) => {
-    // For simplicity, just add to current data array
-    if (orders) orders.unshift(order);
-    setShowForm(false);
-  };
-
   const handleDeleteOrder = (id: string) => {
     if (orders) {
       const index = orders.findIndex((o) => o.id === id);

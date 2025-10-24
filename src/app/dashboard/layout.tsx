@@ -1,4 +1,3 @@
-// app/dashboard/layout.tsx
 import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
 import { ReactNode } from "react";

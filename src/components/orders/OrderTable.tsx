@@ -3,21 +3,13 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { Order } from '@/types/order';
 import { useQuery } from '@tanstack/react-query';
 
 type OrderItem = {
 	productId: string;
 	quantity: number;
 	price: number;
-};
-
-type Order = {
-	id: string;
-	clientName: string;
-	items: OrderItem[]; // use productId instead of name
-	totalAmount: number;
-	paymentStatus: 'Pending' | 'Shipped' | 'Delivered' | 'Cancelled';
-	createdAt: string;
 };
 
 interface Product {
@@ -32,7 +24,6 @@ interface OrderTableProps {
 }
 
 export default function OrderTable({ data, onDelete }: OrderTableProps) {
-	// Fetch products so we can display names
 	const { data: products } = useQuery({
 		queryKey: ['products'],
 		queryFn: async () => {
@@ -100,16 +91,11 @@ export default function OrderTable({ data, onDelete }: OrderTableProps) {
 											{order.clientName}
 										</td>
 										<td className="px-5 py-3 text-gray-700 dark:text-gray-300">
-											{order.productIds
-												?.map((pid, idx) => {
-													const qty =
-														order.quantities?.[
-															idx
-														] ?? 0;
-													return `${getProductName(
-														pid
-													)} (qty: ${qty})`;
-												})
+											{order.products
+												?.map(
+													(product) =>
+														`${product.name} (qty: ${product.quantities})`
+												)
 												.join(', ')}
 										</td>
 										<td className="px-5 py-3 font-semibold text-gray-900 dark:text-gray-100">
