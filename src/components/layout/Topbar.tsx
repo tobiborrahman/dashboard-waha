@@ -48,17 +48,13 @@ export default function Topbar({
 
   return (
     <header className="w-full h-[61] bg-white dark:bg-slate-800 border-b border-l border-gray-200 dark:border-slate-700 flex items-center justify-between px-4 sm:px-6">
-      {/* Left: menu + title */}
       <div className="flex items-center gap-3">
-      {/* Title: hidden on very small screens */}
         <h2 className="hidden sm:block font-semibold text-lg text-gray-800 dark:text-gray-100">
           Dashboard
         </h2>
       </div>
 
-      {/* Right: actions */}
       <div className="flex items-center gap-4">
-        {/* Theme toggle */}
         <button
           aria-label="Toggle theme"
           onClick={() => setIsDark((s) => !s)}
@@ -67,7 +63,6 @@ export default function Topbar({
           <SunMoon className="w-5 h-5 text-gray-700 dark:text-gray-200" />
         </button>
 
-        {/* Notifications */}
         <button
           aria-label="Notifications"
           className="relative p-2 rounded-md hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -83,20 +78,17 @@ export default function Topbar({
           )}
         </button>
 
-        {/* User block */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 p-1 rounded-md hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gray-100 dark:bg-slate-600 text-gray-700 dark:text-gray-100">
               <User className="w-5 h-5" />
             </span>
 
-            {/* hide username on smallest screens */}
             <span className="hidden sm:inline-block text-sm font-medium text-gray-800 dark:text-gray-100">
               {userName}
             </span>
           </div>
 
-          {/* Sign out (icon button) */}
           <button
             onClick={() => onSignOut?.()}
             aria-label="Sign out"

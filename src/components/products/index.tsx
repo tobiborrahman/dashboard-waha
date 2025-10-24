@@ -169,7 +169,6 @@ export default function ProductTable({ data }: ProductTableProps) {
 
   return (
     <Card className="shadow-sm p-0 rounded-md">
-      {/* Filters & Column Visibility */}
       <div className="p-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
         <Input
           placeholder="Search..."
@@ -197,7 +196,6 @@ export default function ProductTable({ data }: ProductTableProps) {
           </PopoverContent>
         </Popover>
 
-        {/* Category Filter */}
         <Select
           onValueChange={(value) =>
             setColumnFilters([{ id: 'category', value }])
@@ -216,7 +214,6 @@ export default function ProductTable({ data }: ProductTableProps) {
         </Select>
       </div>
 
-      {/* Table */}
       <CardContent className="p-0 overflow-x-auto">
         <table className="min-w-full text-sm text-left">
           <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 uppercase text-xs font-semibold tracking-wider">
@@ -259,7 +256,6 @@ export default function ProductTable({ data }: ProductTableProps) {
         </table>
       </CardContent>
 
-      {/* Pagination */}
       <div className="p-3 flex items-center justify-between">
         <div className="flex gap-1">
           <Button

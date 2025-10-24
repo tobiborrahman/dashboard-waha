@@ -28,7 +28,7 @@ const ProductSchema = z.object({
 		})
 		.min(0, 'Stock must be >= 0'),
 	description: z.string().optional(),
-	active: z.boolean().default(true),
+	active: z.boolean(),
 });
 
 type ProductFormValues = z.infer<typeof ProductSchema>;
@@ -62,7 +62,7 @@ export default function ProductForm({
 			price: defaultValues?.price ?? 0,
 			stock: defaultValues?.stock ?? 0,
 			description: defaultValues?.description ?? '',
-			active: defaultValues?.active ?? true,
+			active: defaultValues?.active,
 		},
 	});
 
@@ -87,9 +87,7 @@ export default function ProductForm({
 
 	return (
 		<form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6">
-			{/* Grid for main inputs */}
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-				{/* Product Name */}
 				<Controller
 					control={control}
 					name="name"
@@ -109,7 +107,6 @@ export default function ProductForm({
 					)}
 				/>
 
-				{/* SKU */}
 				<Controller
 					control={control}
 					name="sku"
@@ -131,7 +128,6 @@ export default function ProductForm({
 					)}
 				/>
 
-				{/* Category */}
 				<Controller
 					control={control}
 					name="category"
@@ -154,7 +150,6 @@ export default function ProductForm({
 					)}
 				/>
 
-				{/* Price */}
 				<Controller
 					control={control}
 					name="price"
@@ -184,7 +179,6 @@ export default function ProductForm({
 					)}
 				/>
 
-				{/* Stock */}
 				<Controller
 					control={control}
 					name="stock"
@@ -208,7 +202,6 @@ export default function ProductForm({
 				/>
 			</div>
 
-			{/* Description */}
 			<Controller
 				control={control}
 				name="description"
@@ -227,7 +220,6 @@ export default function ProductForm({
 				)}
 			/>
 
-			{/* Image Upload */}
 			<div className="flex flex-col md:flex-row items-start gap-4">
 				<div>
 					<label className="block text-sm font-medium">
@@ -251,7 +243,6 @@ export default function ProductForm({
 				)}
 			</div>
 
-			{/* Active Switch */}
 			<Controller
 				control={control}
 				name="active"
@@ -266,7 +257,6 @@ export default function ProductForm({
 				)}
 			/>
 
-			{/* Buttons */}
 			<div className="flex items-center gap-3">
 				<Button type="submit" disabled={isSubmitting}>
 					Save Product

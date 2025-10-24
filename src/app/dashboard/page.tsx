@@ -103,14 +103,12 @@ export default function DashboardPage() {
 		<div className="p-6 space-y-6">
 			<h1 className="text-3xl font-bold">Dashboard</h1>
 
-			{/* Metric Cards */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 				{metricCards.map((card, idx) => (
 					<Card
 						key={idx}
 						className="shadow hover:shadow-md transition relative overflow-hidden rounded-lg"
 					>
-						{/* Colored bar */}
 						<div
 							className={`absolute left-0 top-0 h-full w-1 ${card.bgColor}`}
 						></div>
@@ -129,7 +127,6 @@ export default function DashboardPage() {
 				))}
 			</div>
 
-			{/* Orders & Revenue Chart */}
 			<Card className="bg-white shadow rounded-lg">
 				<CardHeader className="border-b-0">
 					<CardTitle>Orders & Revenue (Last 30 Days)</CardTitle>
@@ -215,7 +212,6 @@ export default function DashboardPage() {
 				</CardContent>
 			</Card>
 
-			{/* Tables */}
 			<div>
 				<Card className="bg-white shadow rounded-lg">
 					<CardHeader>
